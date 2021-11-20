@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="kgp",
-    version="0.0.2",
+    version="0.0.3",
     author="Rastislav Hronsky",
     author_email="hronskyr@gmail.com",
     description="Python3 port of the Kant Generator Pro",
