@@ -50,7 +50,7 @@ def openAnything(source):
     # try to open with native open function (if source is pathname)
     try:
         return open(source)
-    except (IOError, OSError):
+    except (IOError, OSError) as e:
         pass
     
     # treat source as string

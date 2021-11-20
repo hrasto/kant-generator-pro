@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 """Kant Generator for Python
 
 Generates mock philosophy based on a context-free grammar
@@ -29,9 +29,10 @@ __license__ = "Python"
 
 from xml.dom import minidom
 import random
-import toolbox
+from . import toolbox
 import sys
 import getopt
+import os
 
 _debug = 0
 
@@ -227,7 +228,7 @@ def usage():
     print(__doc__)
 
 def main(argv):
-    grammar = "kant.xml"
+    grammar = "kant"
     try:
         opts, args = getopt.getopt(argv, "hg:d", ["help", "grammar="])
     except getopt.GetoptError:
@@ -242,10 +243,20 @@ def main(argv):
             _debug = 1
         elif opt in ("-g", "--grammar"):
             grammar = arg
-    
+
+    if grammar == "kant":
+        grammar = os.path.join(os.path.dirname(__file__), "kant.xml")
+    if grammar == "husserl":
+        grammar = os.path.join(os.path.dirname(__file__), "husserl.xml")
+    if grammar == "russiansample":
+        grammar = os.path.join(os.path.dirname(__file__), "russiansample.xml")
+    if grammar == "thanks":
+        grammar = os.path.join(os.path.dirname(__file__), "thanks.xml")
+
     source = "".join(args)
     k = KantGenerator(grammar, source)
-    print(k.output())
+
+    return k.output()
 
 if __name__ == "__main__":
     main(sys.argv[1:])
