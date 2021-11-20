@@ -11,7 +11,7 @@ __date__ = "$Date: 2004/05/05 21:57:20 $"
 __copyright__ = "Copyright (c) 2001 Mark Pilgrim"
 __license__ = "Python"
 
-import importlib.resources
+import pkg_resources
 
 def openAnything(source):
     """URI, filename, or string --> stream
@@ -44,7 +44,9 @@ def openAnything(source):
 
     # try to open open of the built-in grammars
     if source in ['kant', 'husserl', 'russiansample', 'thanks']:
-        return importlib.resources.open_text('kgp', 'grammars/' + source + '.xml')
+        fpath = pkg_resources.resource_filename('kgp', 'grammars/' + source + '.xml')
+        print(fpath)
+        return open(fpath)
 
     # try to open with urllib (if source is http, ftp, or file URL)
     import urllib.request, urllib.parse, urllib.error
