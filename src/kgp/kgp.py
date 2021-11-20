@@ -244,15 +244,6 @@ def main(argv):
         elif opt in ("-g", "--grammar"):
             grammar = arg
 
-    if grammar == "kant":
-        grammar = os.path.join(os.path.dirname(__file__), "kant.xml")
-    if grammar == "husserl":
-        grammar = os.path.join(os.path.dirname(__file__), "husserl.xml")
-    if grammar == "russiansample":
-        grammar = os.path.join(os.path.dirname(__file__), "russiansample.xml")
-    if grammar == "thanks":
-        grammar = os.path.join(os.path.dirname(__file__), "thanks.xml")
-
     source = "".join(args)
     k = KantGenerator(grammar, source)
 
