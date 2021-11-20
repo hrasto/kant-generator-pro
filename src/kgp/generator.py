@@ -1,7 +1,7 @@
 import sys
 from .kgp import main
 
-def generate(grammar: str):
+def generate(grammar: str = 'kant'):
     """[summary]
 
     Args:
