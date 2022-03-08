@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<!DOCTYPE grammar PUBLIC "-//diveintopython.org//DTD Kant Generator Pro v1.0//EN" "kgp.dtd">
+<grammar>
+
+<ref id="greeting.keyword.informal">
+  <p>hi</p>
+  <p>hello</p>
+  <p>hey</p>
+  <p>heyy</p>
+  <p>howdy</p>
+</ref>
+
+<ref id="greeting.keyword.formal">
+  <p>good <choice><p>day</p><p>afternoon</p><p>morning</p><p>evening</p></choice></p>
+</ref>
+
+<ref id="greeting.keyword">
+    <p><choice><p><xref id="greeting.keyword.informal"/></p><p><xref id="greeting.keyword.formal"/></p></choice></p>
+</ref>
+
+<ref id="name.male">
+    <p>john</p>
+    <p>joe</p>
+    <p>josh</p>
+    <p>jeremy</p>
+</ref>
+
+<ref id="name.female">
+    <p>susan</p>
+    <p>sandra</p>
+    <p>sue</p>
+    <p>sarah</p>
+</ref>
+
+<ref id="name">
+    <p><xref id="name.male"/></p>
+    <p><xref id="name.female"/></p>
+</ref>
+
+<ref id="greeting">
+    <p><xref id="greeting.keyword"/><p chance="80"> <xref id="name"/></p><choice><p>!</p><p>,</p></choice><xref id="break"/></p>
+</ref>
+
+<ref id="quantifier">
+    <p>a <choice><p>few</p><p>couple of</p></choice></p>
+    <p>some</p>
+    <p>not many</p>
+</ref>
+
+<ref id="time.unit">
+    <p>days</p>
+    <p>weeks</p>
+    <p>months</p>
+    <p>years</p>
+</ref>
+
+<ref id="time.past">
+    <p>ago</p>
+    <p>back</p>
+</ref>
+
+<ref id="comma">
+    <p><p chance="50">,</p></p>
+</ref>
+
+<ref id="time">
+    <p><xref id="quantifier"/> <xref id="time.unit"/> <xref id="time.past"/><xref id="comma"/></p>
+</ref>
+
+<ref id="person">
+    <p>i</p>
+    <p>my <choice><p>brother</p><p>sister</p><p><p chance="50">grand</p><choice><p>father</p><p>mother</p></choice></p><p>aunt</p><p>uncle</p><p>cousin</p></choice></p>
+    <p><xref id="name.male"/></p>
+    <p><xref id="name.female"/></p>
+</ref>
+
+<ref id="action">
+    <p>purchased</p>
+    <p>bought</p>
+    <p>got</p>
+    <p>acquired</p>
+</ref>
+
+<ref id="concatenation">
+    <p>and</p>
+    <p>with</p>
+    <p>plus</p>
+</ref>
+
+<ref id="product.single">
+    <p><p chance="50">t-</p>shirt</p>
+    <p><p chance="50">swim</p>suit</p>
+    <p><p chance="50">trench</p>coat</p>
+    <p><p chance="50">tank</p>top</p>
+    <p><p chance="50">mini</p>skirt</p>
+    <p>sweater</p>
+    <p>blouse</p>
+    <p>jacket</p>
+    <p>vest</p>
+    <p>dress</p>
+</ref>
+
+<ref id="product.multi">
+    <p><p chance="50">sports </p>shoes</p>
+    <p><p chance="50">sports </p>socks</p>
+    <p>sandals</p>
+    <p>slippers</p>
+    <p>shorts</p>
+    <p>pants</p>
+    <p>trousers</p>
+    <p>jeans</p>
+    <p>pajamas</p>
+    <p>boots</p>
+    <p>heels</p>
+</ref>
+
+<ref id="prefix.single">
+    <p>this</p>
+    <p>a</p>
+</ref>
+
+<ref id="prefix.multi">
+    <p>these</p>
+    <p>some</p>
+</ref>
+
+<ref id="object.one">
+    <p><xref id="prefix.single"/> <xref id="product.single"/></p>
+    <p><xref id="prefix.multi"/> <xref id="product.multi"/></p>
+</ref>
+
+<ref id="object.two">
+    <p><xref id="object.one"/> <xref id="concatenation"/> <xref id="object.one"/></p>
+</ref>
+
+<ref id="object">
+    <p><xref id="object.one"/></p>
+    <p><xref id="object.two"/></p>
+</ref>
+
+<ref id="association">
+    <p>from <choice><p>you</p><p>your <choice><p>colleague</p><p>assistant</p><p>associate</p></choice></p><p>this <choice><p>shop</p><p>store</p><p>brand</p></choice></p></choice></p>
+</ref>
+
+<ref id="description.product">
+    <p><p chance="50"><xref id="time"/> </p><xref id="person"/> <xref id="action"/> <xref id="object"/><p chance="50"> <xref id="association"/></p>.</p>
+</ref>
+
+<ref id="pitty">
+    <p>sadly</p>
+    <p>unfortunately</p>
+    <p>regrettably</p>
+</ref>
+
+<ref id="complaint.fit">
+    <p>fit<p chance="50">s</p> <choice><p>badly</p><p>poorly</p></choice></p>
+    <p><choice><p>does</p><p>do</p></choice> not fit <choice><p><p chance="50">very </p>well</p><p>great</p><p>nicely</p></choice></p>
+</ref>
+
+<ref id="complaint">
+    <p><choice><p>it</p><p>they</p></choice> <xref id="complaint.fit"/></p>
+    <p>the <choice><p>material</p><p>fabric</p><p>quality</p></choice> is <choice><p>bad</p><p>awful</p><p>garbage</p><p>poor</p><p>not good</p></choice></p>
+</ref>
+
+<ref id="description.problem">
+    <p><p chance="50"><xref id="pitty"/><xref id="comma"/> </p><xref id="complaint"/>.</p>
+</ref>
+
+<ref id="break">
+    <p> </p>
+    <p>
+
+</p>
+</ref>
+
+<ref id="description">
+    <p><xref id="description.product"/><xref id="break"/><xref id="description.problem"/><xref id="break"/></p>
+</ref>
+
+<ref id="reimbursement">
+    <p><choice><p>my</p><p>the</p></choice> <choice><p>money</p><p>cash</p></choice> back</p>
+    <p>a <choice><p>refund</p><p>cashback</p></choice></p>
+</ref>
+
+<ref id="request.detail">
+    <p><choice><p>get</p><p>have</p><p>receive</p></choice> <xref id="reimbursement"/></p>
+    <p><choice><p>return</p><p>exchange</p></choice> <choice><p>it</p><p>them</p></choice></p>
+</ref>
+
+<ref id="request">
+    <p><choice><p>can</p><p>may</p></choice> i <p chance="50">please </p><xref id="request.detail"/>?<xref id="break"/></p>
+</ref>
+
+<ref id="thanks">
+    <p><choice><p>thank you</p><p>thanks<p chance="50"> a <choice><p>lot</p><p>ton</p></choice></p></p></choice><p chance="50"> in advance</p></p>
+</ref>
+
+<ref id="farewell">
+    <p><p chance="50"><choice><p>best</p><p>fond</p></choice> </p>regards</p>
+    <p>best wishes</p>
+    <p><p chance="50">all the </p>best</p>
+</ref>
+
+<ref id="ending">
+    <p><xref id="thanks"/><choice><p>!</p><p>.</p></choice><xref id="break"/><xref id="farewell"/>,<xref id="break"/><xref id="name"/></p>
+</ref>
+
+<ref id="reclamation">
+    <p><xref id="greeting"/><xref id="description"/><xref id="request"/><xref id="ending"/></p>
+</ref>
+
+</grammar>

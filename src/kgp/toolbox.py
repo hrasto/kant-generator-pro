@@ -43,9 +43,11 @@ def openAnything(source):
         return sys.stdin
 
     # try to open open of the built-in grammars
-    if source in ['kant', 'husserl', 'russiansample', 'thanks']:
+    try:
         fpath = pkg_resources.resource_filename('kgp', 'grammars/' + source + '.xml')
         return open(fpath)
+    except:
+        pass
 
     # try to open with urllib (if source is http, ftp, or file URL)
     import urllib.request, urllib.parse, urllib.error
